@@ -232,7 +232,7 @@
 									"type": "String"
 								},
 								"sink": {
-									"name": "ANIMAL_S_NAME",
+									"name": "ANIMAL_NAME",
 									"type": "String"
 								}
 							},
