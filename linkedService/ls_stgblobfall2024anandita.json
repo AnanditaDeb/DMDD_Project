@@ -1,0 +1,10 @@
+{
+	"name": "ls_stgblobfall2024anandita",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://stgblobfall2024anandita.dfs.core.windows.net/"
+		}
+	}
+}
