@@ -232,7 +232,8 @@
 									"type": "String"
 								},
 								"sink": {
-									"name": "ANIMALS_NAME"
+									"name": "ANIMAL_S_NAME",
+									"type": "String"
 								}
 							},
 							{
