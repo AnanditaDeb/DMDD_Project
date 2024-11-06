@@ -1,11 +1,12 @@
 {
 	"name": "ls_stgblobfall2024anandita",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
 		"type": "AzureBlobStorage",
 		"typeProperties": {
-			"serviceEndpoint": "https://stgblobfall2024anandita.blob.core.windows.net/",
-			"accountKind": "StorageV2"
+			"sasUri": "https://stgblobfall2024anandita.blob.core.windows.net",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDQ5ODIzOTAwLTAwQ0YtNDhCMy1CNEFELTc0M0Q1MjdCQUM1RV9jNTU5ZTMyMC1mNzU3LTRhZTgtYjdjMi0wMjFmZDRjNDkwMzYiDQp9"
 		}
 	}
 }
