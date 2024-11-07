@@ -13,7 +13,7 @@
 				},
 				{
 					"dataset": {
-						"referenceName": "ds_snowflake_stg_spl",
+						"referenceName": "ds_Breed_Dim",
 						"type": "DatasetReference"
 					},
 					"name": "sourceBreedDim"
