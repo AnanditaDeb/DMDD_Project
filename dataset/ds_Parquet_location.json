@@ -1,0 +1,19 @@
+{
+	"name": "ds_Parquet_location",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_stgfall2024anandita",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "geo-data.parquet"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
