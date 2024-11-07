@@ -1,0 +1,104 @@
+{
+	"name": "df_load_location_dim_copy1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_read_parquet_location",
+						"type": "DatasetReference"
+					},
+					"name": "sourcelocation"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_Location_Dim",
+						"type": "DatasetReference"
+					},
+					"name": "sourceLocationDim"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_Location_Dim",
+						"type": "DatasetReference"
+					},
+					"name": "sinkLocationDim"
+				}
+			],
+			"transformations": [
+				{
+					"name": "SourceDataWithSK"
+				},
+				{
+					"name": "surrogateKey"
+				},
+				{
+					"name": "DerivedColumns"
+				}
+			],
+			"scriptLines": [
+				"parameters{",
+				"     DI_JOB_ID as string (\"59\")",
+				"}",
+				"source(output(",
+				"          state_fips as string,",
+				"          state as string,",
+				"          state_abbr as string,",
+				"          zipcode as string,",
+				"          county as string,",
+				"          city as string",
+				"     ),",
+				"     allowSchemaDrift: false,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> sourcelocation",
+				"source(output(",
+				"          MAXLOCATIONSK as decimal(10,0)",
+				"     ),",
+				"     allowSchemaDrift: false,",
+				"     validateSchema: false,",
+				"     query: 'SELECT NVL(MAX(LOCATION_SK),0) as MAXLOCATIONSK FROM LOCATION_DIM',",
+				"     format: 'query') ~> sourceLocationDim",
+				"sourcelocation, sourceLocationDim join(1==1,",
+				"     joinType:'cross',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> SourceDataWithSK",
+				"SourceDataWithSK keyGenerate(output(RowNum as long),",
+				"     startAt: 1L,",
+				"     stepValue: 1L) ~> surrogateKey",
+				"surrogateKey derive(DI_CREATED_DT = toString(currentDate(), 'yyyy-MM-dd'),",
+				"          DI_JOB_ID = $DI_JOB_ID,",
+				"          LOCATION_SK = MAXLOCATIONSK + RowNum) ~> DerivedColumns",
+				"DerivedColumns sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          LOCATION_SK as string,",
+				"          ZIP as string,",
+				"          CITY as string,",
+				"          STATE as string,",
+				"          DI_JOB_ID as string,",
+				"          DI_CREATED_DT as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     stageInsert: true,",
+				"     mapColumn(",
+				"          STATE = state,",
+				"          ZIP = zipcode,",
+				"          CITY = city,",
+				"          DI_JOB_ID,",
+				"          DI_CREATED_DT",
+				"     )) ~> sinkLocationDim"
+			]
+		}
+	}
+}
