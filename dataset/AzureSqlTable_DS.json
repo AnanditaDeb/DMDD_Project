@@ -1,5 +1,5 @@
 {
-	"name": "AzureSqlTable1",
+	"name": "AzureSqlTable_DS",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabase1_dynamic_pipeline",
