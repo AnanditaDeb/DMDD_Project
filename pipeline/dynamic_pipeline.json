@@ -34,6 +34,42 @@
 					},
 					"firstRowOnly": false
 				}
+			},
+			{
+				"name": "ForEachTable",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Lookup_Table",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"isSequential": false,
+					"batchCount": 10,
+					"activities": [
+						{
+							"name": "Set TableName",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "tablename",
+								"value": {
+									"value": "@item()",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
 			}
 		],
 		"parameters": {
@@ -44,6 +80,11 @@
 			"tname": {
 				"type": "string",
 				"defaultValue": "customer"
+			}
+		},
+		"variables": {
+			"tablename": {
+				"type": "String"
 			}
 		},
 		"annotations": []
