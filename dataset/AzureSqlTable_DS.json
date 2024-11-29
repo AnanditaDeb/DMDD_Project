@@ -5,6 +5,14 @@
 			"referenceName": "AzureSqlDatabase1_dynamic_pipeline",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"schema_name": {
+				"type": "string"
+			},
+			"table_name": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [],
