@@ -56,61 +56,29 @@
 					"batchCount": 10,
 					"activities": [
 						{
-							"name": "Set TableName",
-							"type": "SetVariable",
+							"name": "Source2Parquet",
+							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"variableName": "tablename",
-								"value": {
-									"value": "@item().table_name",
-									"type": "Expression"
-								}
-							}
-						},
-						{
-							"name": "copy_csv_2_locationdim",
-							"type": "Copy",
-							"dependsOn": [
-								{
-									"activity": "Set TableName",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
-							"policy": {
 								"timeout": "0.1:00:00",
-								"retry": 0,
+								"retry": 2,
 								"retryIntervalInSeconds": 30,
 								"secureOutput": false,
 								"secureInput": false
 							},
-							"userProperties": [],
+							"userProperties": [
+								{
+									"name": "Directory"
+								},
+								{
+									"name": "FileName"
+								}
+							],
 							"typeProperties": {
 								"source": {
-									"type": "DelimitedTextSource",
-									"storeSettings": {
-										"type": "AzureBlobFSReadSettings",
-										"recursive": true,
-										"enablePartitionDiscovery": false
-									},
-									"formatSettings": {
-										"type": "DelimitedTextReadSettings"
-									}
-								},
-								"sink": {
-									"type": "ParquetSink",
-									"storeSettings": {
-										"type": "AzureBlobFSWriteSettings"
-									},
-									"formatSettings": {
-										"type": "ParquetWriteSettings"
-									}
+									"type": "AzureSqlSource",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
 								},
 								"enableStaging": false,
 								"translator": {
@@ -119,97 +87,80 @@
 										{
 											"source": {
 												"name": "state_fips",
-												"type": "String",
-												"physicalType": "String"
+												"type": "String"
 											},
 											"sink": {
 												"name": "state_fips",
-												"type": "String",
-												"physicalType": "UTF8"
+												"type": "String"
 											}
 										},
 										{
 											"source": {
 												"name": "state",
-												"type": "String",
-												"physicalType": "String"
+												"type": "String"
 											},
 											"sink": {
 												"name": "state",
-												"type": "String",
-												"physicalType": "UTF8"
+												"type": "String"
 											}
 										},
 										{
 											"source": {
 												"name": "state_abbr",
-												"type": "String",
-												"physicalType": "String"
+												"type": "String"
 											},
 											"sink": {
 												"name": "state_abbr",
-												"type": "String",
-												"physicalType": "UTF8"
+												"type": "String"
 											}
 										},
 										{
 											"source": {
 												"name": "zipcode",
-												"type": "String",
-												"physicalType": "String"
+												"type": "String"
 											},
 											"sink": {
 												"name": "zipcode",
-												"type": "String",
-												"physicalType": "UTF8"
+												"type": "String"
 											}
 										},
 										{
 											"source": {
 												"name": "county",
-												"type": "String",
-												"physicalType": "String"
+												"type": "String"
 											},
 											"sink": {
 												"name": "county",
-												"type": "String",
-												"physicalType": "UTF8"
+												"type": "String"
 											}
 										},
 										{
 											"source": {
 												"name": "city",
-												"type": "String",
-												"physicalType": "String"
+												"type": "String"
 											},
 											"sink": {
 												"name": "city",
-												"type": "String",
-												"physicalType": "UTF8"
+												"type": "String"
 											}
 										}
-									],
-									"typeConversion": true,
-									"typeConversionSettings": {
-										"allowDataTruncation": true,
-										"treatBooleanAsNumber": false
-									}
+									]
 								}
 							},
 							"inputs": [
 								{
-									"referenceName": "ds_GeoData",
+									"referenceName": "AzureSqlTable_DS",
 									"type": "DatasetReference",
 									"parameters": {
-										"Directory": "na",
-										"FileName": "geo-data.csv"
+										"schema_name": {
+											"value": "@item().schema_name",
+											"type": "Expression"
+										},
+										"table_name": {
+											"value": "@item().table_name",
+											"type": "Expression"
+										}
 									}
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "ds_Parquet_location",
-									"type": "DatasetReference"
 								}
 							]
 						}
