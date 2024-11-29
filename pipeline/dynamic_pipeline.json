@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Lookup_Table",
+				"name": "Lookup_Table_Names",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -18,7 +18,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "select name as table_name\nfrom sys.tables\nwhere type = 'U';",
+							"value": "select t.name as table_name, s.name schema_name\nfrom sys.tables t join sys.schemas s\non t.schema_id = s.schema_id\nwhere type='U'\nand s.name = 'dbo'",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -40,7 +40,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Lookup_Table",
+						"activity": "Lookup_Table_Names",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -48,6 +48,10 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup_Table').output.value",
+						"type": "Expression"
+					},
 					"isSequential": false,
 					"batchCount": 10,
 					"activities": [
