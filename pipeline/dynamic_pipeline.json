@@ -66,19 +66,21 @@
 								"secureOutput": false,
 								"secureInput": false
 							},
-							"userProperties": [
-								{
-									"name": "Directory"
-								},
-								{
-									"name": "FileName"
-								}
-							],
+							"userProperties": [],
 							"typeProperties": {
 								"source": {
 									"type": "AzureSqlSource",
 									"queryTimeout": "02:00:00",
 									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
 								},
 								"enableStaging": false,
 								"translator": {
@@ -87,64 +89,81 @@
 										{
 											"source": {
 												"name": "state_fips",
-												"type": "String"
+												"type": "String",
+												"physicalType": "String"
 											},
 											"sink": {
 												"name": "state_fips",
-												"type": "String"
+												"type": "String",
+												"physicalType": "UTF8"
 											}
 										},
 										{
 											"source": {
 												"name": "state",
-												"type": "String"
+												"type": "String",
+												"physicalType": "String"
 											},
 											"sink": {
 												"name": "state",
-												"type": "String"
+												"type": "String",
+												"physicalType": "UTF8"
 											}
 										},
 										{
 											"source": {
 												"name": "state_abbr",
-												"type": "String"
+												"type": "String",
+												"physicalType": "String"
 											},
 											"sink": {
 												"name": "state_abbr",
-												"type": "String"
+												"type": "String",
+												"physicalType": "UTF8"
 											}
 										},
 										{
 											"source": {
 												"name": "zipcode",
-												"type": "String"
+												"type": "String",
+												"physicalType": "String"
 											},
 											"sink": {
 												"name": "zipcode",
-												"type": "String"
+												"type": "String",
+												"physicalType": "UTF8"
 											}
 										},
 										{
 											"source": {
 												"name": "county",
-												"type": "String"
+												"type": "String",
+												"physicalType": "String"
 											},
 											"sink": {
 												"name": "county",
-												"type": "String"
+												"type": "String",
+												"physicalType": "UTF8"
 											}
 										},
 										{
 											"source": {
 												"name": "city",
-												"type": "String"
+												"type": "String",
+												"physicalType": "String"
 											},
 											"sink": {
 												"name": "city",
-												"type": "String"
+												"type": "String",
+												"physicalType": "UTF8"
 											}
 										}
-									]
+									],
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
 								}
 							},
 							"inputs": [
@@ -158,6 +177,19 @@
 										},
 										"table_name": {
 											"value": "@item().table_name",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "ds_Parquet",
+									"type": "DatasetReference",
+									"parameters": {
+										"Directory": "na",
+										"FileName": {
+											"value": "@concat(\r\n    item().table_name,'.parquet'\r\n)",
 											"type": "Expression"
 										}
 									}
