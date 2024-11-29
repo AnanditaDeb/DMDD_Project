@@ -115,7 +115,96 @@
 									"parameters": {
 										"Directory": "na",
 										"FileName": {
-											"value": "@concat(\r\n    item().table_name,'.parquet'\r\n)",
+											"value": "@concat(\n    item().table_name,'.parquet'\n)",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						},
+						{
+							"name": "Write_foreach_snowflake_copy1",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "Source2Parquet",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.1:00:00",
+								"retry": 2,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "ParquetSource",
+									"storeSettings": {
+										"type": "AzureBlobFSReadSettings",
+										"recursive": true,
+										"enablePartitionDiscovery": false
+									},
+									"formatSettings": {
+										"type": "ParquetReadSettings"
+									}
+								},
+								"sink": {
+									"type": "SnowflakeV2Sink",
+									"importSettings": {
+										"type": "SnowflakeImportCopyCommand"
+									}
+								},
+								"enableStaging": true,
+								"stagingSettings": {
+									"linkedServiceName": {
+										"referenceName": "ls_stgblobfall2024anandita",
+										"type": "LinkedServiceReference"
+									}
+								},
+								"enableSkipIncompatibleRow": false,
+								"logSettings": {
+									"enableCopyActivityLog": true,
+									"copyActivityLogSettings": {
+										"logLevel": "Warning",
+										"enableReliableLogging": false
+									},
+									"logLocationSettings": {
+										"linkedServiceName": {
+											"referenceName": "ls_stgblobfall2024anandita",
+											"type": "LinkedServiceReference"
+										}
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "ds_Parquet",
+									"type": "DatasetReference",
+									"parameters": {
+										"Directory": "na",
+										"FileName": {
+											"value": "@concat(\n    item().table_name,'.parquet'\n)",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "SnowflakeTable1",
+									"type": "DatasetReference",
+									"parameters": {
+										"sname": {
+											"value": "@item().schema_name\n",
+											"type": "Expression"
+										},
+										"tablename": {
+											"value": "@item().table_name",
 											"type": "Expression"
 										}
 									}
@@ -124,89 +213,6 @@
 						}
 					]
 				}
-			},
-			{
-				"name": "Write_foreach_snowflake",
-				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "ForEachTable",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "0.1:00:00",
-					"retry": 2,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "ParquetSource",
-						"storeSettings": {
-							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "ParquetReadSettings"
-						}
-					},
-					"sink": {
-						"type": "SnowflakeV2Sink",
-						"importSettings": {
-							"type": "SnowflakeImportCopyCommand"
-						}
-					},
-					"enableStaging": false,
-					"enableSkipIncompatibleRow": false,
-					"logSettings": {
-						"enableCopyActivityLog": true,
-						"copyActivityLogSettings": {
-							"logLevel": "Warning",
-							"enableReliableLogging": false
-						},
-						"logLocationSettings": {
-							"linkedServiceName": {
-								"referenceName": "ls_stgblobfall2024anandita",
-								"type": "LinkedServiceReference"
-							}
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "ds_Parquet",
-						"type": "DatasetReference",
-						"parameters": {
-							"Directory": "na",
-							"FileName": {
-								"value": "activity('Lookup_Table_Names').output",
-								"type": "Expression"
-							}
-						}
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "SnowflakeTable1",
-						"type": "DatasetReference",
-						"parameters": {
-							"sname": {
-								"value": "@pipeline().parameters.sname",
-								"type": "Expression"
-							},
-							"tablename": {
-								"value": "@activity('Lookup_Table_Names').output\n",
-								"type": "Expression"
-							}
-						}
-					}
-				]
 			}
 		],
 		"parameters": {
