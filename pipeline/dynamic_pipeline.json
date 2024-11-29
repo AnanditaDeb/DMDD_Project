@@ -18,7 +18,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "select name as table_name\nfrom sys.table\nwhere type = 'U';",
+							"value": "select name as table_name\nfrom sys.tables\nwhere type = 'U';",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
