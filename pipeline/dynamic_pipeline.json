@@ -147,15 +147,6 @@
 				"typeProperties": {
 					"source": {
 						"type": "ParquetSource",
-						"additionalColumns": [
-							{
-								"name": "DI_CREATED_DT",
-								"value": {
-									"value": "@utcNow()",
-									"type": "Expression"
-								}
-							}
-						],
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
@@ -171,18 +162,49 @@
 							"type": "SnowflakeImportCopyCommand"
 						}
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": false,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "ls_stgblobfall2024anandita",
+								"type": "LinkedServiceReference"
+							}
+						}
+					}
 				},
 				"inputs": [
 					{
 						"referenceName": "ds_Parquet",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Directory": "na",
+							"FileName": {
+								"value": "activity('Lookup_Table_Names').output",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "SnowflakeTable1",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"sname": {
+								"value": "@pipeline().parameters.sname",
+								"type": "Expression"
+							},
+							"tablename": {
+								"value": "@activity('Lookup_Table_Names').output\n",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
