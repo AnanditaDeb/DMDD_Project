@@ -5,8 +5,19 @@
 			"referenceName": "ls_snowflake_adf_assign",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"sname": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "SnowflakeV2Table",
-		"schema": []
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@item().schema_name",
+				"type": "Expression"
+			}
+		}
 	}
 }
