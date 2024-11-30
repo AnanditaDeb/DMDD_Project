@@ -10,8 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "NYC_Dataset",
-				"fileSystem": "bronze"
+				"fileName": "NYC_Dataset.parquet",
+				"fileSystem": "silver"
 			},
 			"compressionCodec": "snappy"
 		},
