@@ -1,0 +1,16 @@
+{
+	"name": "SnowflakeTable_Chicago",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_snowflake_adf_assign",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SnowflakeV2Table",
+		"schema": [],
+		"typeProperties": {
+			"schema": "PUBLIC",
+			"table": "STAGE_CHICAGO"
+		}
+	}
+}
