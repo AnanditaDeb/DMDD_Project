@@ -22,7 +22,7 @@
 		"schema": [],
 		"typeProperties": {
 			"schema": {
-				"value": "@dataset().schema_name",
+				"value": "DEV_EDW.dbo",
 				"type": "Expression"
 			},
 			"table": {
