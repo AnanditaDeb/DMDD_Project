@@ -1,0 +1,20 @@
+{
+	"name": "Parquet_Austin",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_stgfall2024anandita",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Austin_Dataset",
+				"fileSystem": "bronze"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
