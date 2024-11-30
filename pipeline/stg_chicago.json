@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy_2_Silver_As_Parquet_Austin",
+				"name": "Copy_2_Silver_As_Parquet_Chicago",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -534,11 +534,11 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ds_Austin_data",
+						"referenceName": "ds_Chicago_data",
 						"type": "DatasetReference",
 						"parameters": {
 							"Directory": "na",
-							"FileName": "AUSTIN_Dataset"
+							"FileName": "Chicago_Dataset"
 						}
 					}
 				],
@@ -554,7 +554,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Copy_2_Silver_As_Parquet_Austin",
+						"activity": "Copy_2_Silver_As_Parquet_Chicago",
 						"dependencyConditions": [
 							"Succeeded"
 						]
