@@ -12,6 +12,9 @@
 			},
 			"table_name": {
 				"type": "string"
+			},
+			"database": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
@@ -19,11 +22,11 @@
 		"schema": [],
 		"typeProperties": {
 			"schema": {
-				"value": "@dataset().sname",
+				"value": "@dataset().schema_name",
 				"type": "Expression"
 			},
 			"table": {
-				"value": "@dataset().tablename",
+				"value": "@dataset().table_name",
 				"type": "Expression"
 			}
 		}
