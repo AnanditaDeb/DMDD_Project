@@ -10,7 +10,7 @@
 		"schema": [],
 		"typeProperties": {
 			"schema": "PUBLIC",
-			"table": "STAGE_NEWYORK"
+			"table": "STAGE_AUSTIN"
 		}
 	}
 }
