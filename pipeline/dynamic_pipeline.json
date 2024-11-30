@@ -123,7 +123,7 @@
 							]
 						},
 						{
-							"name": "Write_foreach_snowflake_copy1",
+							"name": "Write_foreach_snowflake",
 							"type": "Copy",
 							"dependsOn": [
 								{
