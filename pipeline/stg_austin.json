@@ -574,8 +574,6 @@
 			{
 				"name": "Parquet2StageTable",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Copy_2_Silver_As_Parquet_Austin",
