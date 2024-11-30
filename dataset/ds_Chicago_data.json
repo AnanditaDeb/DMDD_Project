@@ -1,0 +1,229 @@
+{
+	"name": "ds_Chicago_data",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_stgfall2024anandita",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Directory": {
+				"type": "string"
+			},
+			"FileName": {
+				"type": "string",
+				"defaultValue": "Chicago_Dataset"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().FileName",
+					"type": "Expression"
+				},
+				"fileSystem": "bronze"
+			},
+			"columnDelimiter": "\t",
+			"rowDelimiter": "\n",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "CRASH_RECORD_ID",
+				"type": "String"
+			},
+			{
+				"name": "CRASH_DATE_EST_I",
+				"type": "String"
+			},
+			{
+				"name": "CRASH_DATE",
+				"type": "String"
+			},
+			{
+				"name": "POSTED_SPEED_LIMIT",
+				"type": "String"
+			},
+			{
+				"name": "TRAFFIC_CONTROL_DEVICE",
+				"type": "String"
+			},
+			{
+				"name": "DEVICE_CONDITION",
+				"type": "String"
+			},
+			{
+				"name": "WEATHER_CONDITION",
+				"type": "String"
+			},
+			{
+				"name": "LIGHTING_CONDITION",
+				"type": "String"
+			},
+			{
+				"name": "FIRST_CRASH_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "TRAFFICWAY_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "LANE_CNT",
+				"type": "String"
+			},
+			{
+				"name": "ALIGNMENT",
+				"type": "String"
+			},
+			{
+				"name": "ROADWAY_SURFACE_COND",
+				"type": "String"
+			},
+			{
+				"name": "ROAD_DEFECT",
+				"type": "String"
+			},
+			{
+				"name": "REPORT_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "CRASH_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "INTERSECTION_RELATED_I",
+				"type": "String"
+			},
+			{
+				"name": "NOT_RIGHT_OF_WAY_I",
+				"type": "String"
+			},
+			{
+				"name": "HIT_AND_RUN_I",
+				"type": "String"
+			},
+			{
+				"name": "DAMAGE",
+				"type": "String"
+			},
+			{
+				"name": "DATE_POLICE_NOTIFIED",
+				"type": "String"
+			},
+			{
+				"name": "PRIM_CONTRIBUTORY_CAUSE",
+				"type": "String"
+			},
+			{
+				"name": "SEC_CONTRIBUTORY_CAUSE",
+				"type": "String"
+			},
+			{
+				"name": "STREET_NO",
+				"type": "String"
+			},
+			{
+				"name": "STREET_DIRECTION",
+				"type": "String"
+			},
+			{
+				"name": "STREET_NAME",
+				"type": "String"
+			},
+			{
+				"name": "BEAT_OF_OCCURRENCE",
+				"type": "String"
+			},
+			{
+				"name": "PHOTOS_TAKEN_I",
+				"type": "String"
+			},
+			{
+				"name": "STATEMENTS_TAKEN_I",
+				"type": "String"
+			},
+			{
+				"name": "DOORING_I",
+				"type": "String"
+			},
+			{
+				"name": "WORK_ZONE_I",
+				"type": "String"
+			},
+			{
+				"name": "WORK_ZONE_TYPE",
+				"type": "String"
+			},
+			{
+				"name": "WORKERS_PRESENT_I",
+				"type": "String"
+			},
+			{
+				"name": "NUM_UNITS",
+				"type": "String"
+			},
+			{
+				"name": "MOST_SEVERE_INJURY",
+				"type": "String"
+			},
+			{
+				"name": "INJURIES_TOTAL",
+				"type": "String"
+			},
+			{
+				"name": "INJURIES_FATAL",
+				"type": "String"
+			},
+			{
+				"name": "INJURIES_INCAPACITATING",
+				"type": "String"
+			},
+			{
+				"name": "INJURIES_NON_INCAPACITATING",
+				"type": "String"
+			},
+			{
+				"name": "INJURIES_REPORTED_NOT_EVIDENT",
+				"type": "String"
+			},
+			{
+				"name": "INJURIES_NO_INDICATION",
+				"type": "String"
+			},
+			{
+				"name": "INJURIES_UNKNOWN",
+				"type": "String"
+			},
+			{
+				"name": "CRASH_HOUR",
+				"type": "String"
+			},
+			{
+				"name": "CRASH_DAY_OF_WEEK",
+				"type": "String"
+			},
+			{
+				"name": "CRASH_MONTH",
+				"type": "String"
+			},
+			{
+				"name": "LATITUDE",
+				"type": "String"
+			},
+			{
+				"name": "LONGITUDE",
+				"type": "String"
+			},
+			{
+				"name": "LOCATION",
+				"type": "String"
+			}
+		]
+	}
+}
