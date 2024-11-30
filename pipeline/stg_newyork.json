@@ -400,6 +400,7 @@
 						"referenceName": "ds_NY_data",
 						"type": "DatasetReference",
 						"parameters": {
+							"Directory": "na",
 							"FileName": "NYC_Dataset"
 						}
 					}
@@ -414,14 +415,9 @@
 			{
 				"name": "Parquet2StageTable",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "Copy_2_Silver_As_Parquet_NewYork",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -433,15 +429,6 @@
 				"typeProperties": {
 					"source": {
 						"type": "ParquetSource",
-						"additionalColumns": [
-							{
-								"name": "DI_CREATED_DT",
-								"value": {
-									"value": "@utcNow()",
-									"type": "Expression"
-								}
-							}
-						],
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
@@ -464,6 +451,209 @@
 							"type": "LinkedServiceReference"
 						},
 						"path": "snowstaging"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Breed_sk",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CRASH_DATE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Primary_Breed_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CRASH_TIME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Secondary_Breed_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BOROUGH",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Species_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ZIP_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DI_Created_Dt",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "LATITUDE",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "DI_Job_Id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LONGITUDE",
+									"type": "Double"
+								}
+							},
+							{
+								"sink": {
+									"name": "LOCATION",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "ON_STREET_NAME",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "CROSS_STREET_NAME",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "OFF_STREET_NAME",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "NUMBER_OF_PERSONS_INJURED",
+									"type": "Int64"
+								}
+							},
+							{
+								"sink": {
+									"name": "NUMBER_OF_PERSONS_KILLED",
+									"type": "Int64"
+								}
+							},
+							{
+								"sink": {
+									"name": "NUMBER_OF_PEDESTRIANS_INJURED",
+									"type": "Int64"
+								}
+							},
+							{
+								"sink": {
+									"name": "NUMBER_OF_PEDESTRIANS_KILLED",
+									"type": "Int64"
+								}
+							},
+							{
+								"sink": {
+									"name": "NUMBER_OF_CYCLIST_INJURED",
+									"type": "Int64"
+								}
+							},
+							{
+								"sink": {
+									"name": "NUMBER_OF_CYCLIST_KILLED",
+									"type": "Int64"
+								}
+							},
+							{
+								"sink": {
+									"name": "NUMBER_OF_MOTORIST_INJURED",
+									"type": "Int64"
+								}
+							},
+							{
+								"sink": {
+									"name": "NUMBER_OF_MOTORIST_KILLED",
+									"type": "Int64"
+								}
+							},
+							{
+								"sink": {
+									"name": "CONTRIBUTING_FACTOR_VEHICLE_1",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "CONTRIBUTING_FACTOR_VEHICLE_2",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "CONTRIBUTING_FACTOR_VEHICLE_3",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "CONTRIBUTING_FACTOR_VEHICLE_4",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "CONTRIBUTING_FACTOR_VEHICLE_5",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "COLLISION_ID",
+									"type": "Int64"
+								}
+							},
+							{
+								"sink": {
+									"name": "VEHICLE_TYPE_CODE1",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "VEHICLE_TYPE_CODE2",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "VEHICLE_TYPE_CODE_3",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "VEHICLE_TYPE_CODE_4",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "VEHICLE_TYPE_CODE_5",
+									"type": "String"
+								}
+							}
+						]
 					}
 				},
 				"inputs": [
@@ -474,7 +664,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "SnowflakeTable2",
+						"referenceName": "SnowflakeTable_Newyork",
 						"type": "DatasetReference"
 					}
 				]
