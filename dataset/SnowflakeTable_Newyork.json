@@ -1,5 +1,5 @@
 {
-	"name": "SnowflakeTable_Austin",
+	"name": "SnowflakeTable_Newyork",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_snowflake_adf_assign",
@@ -10,7 +10,7 @@
 		"schema": [],
 		"typeProperties": {
 			"schema": "PUBLIC",
-			"table": "STAGE_AUSTIN"
+			"table": "STAGE_NEWYORK"
 		}
 	}
 }
