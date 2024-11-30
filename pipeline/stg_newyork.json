@@ -41,79 +41,349 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "License Issue Date",
+									"name": "CRASH DATE",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "License_Issue_Date",
-									"physicalType": "UTF8"
-								}
-							},
-							{
-								"source": {
-									"name": "License Number",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "License_Number",
-									"physicalType": "UTF8"
-								}
-							},
-							{
-								"source": {
-									"name": "Animal's Name",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Animal_Name",
-									"physicalType": "UTF8"
-								}
-							},
-							{
-								"source": {
-									"name": "Species",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Species",
+									"name": "CRASH DATE",
 									"type": "String",
 									"physicalType": "UTF8"
 								}
 							},
 							{
 								"source": {
-									"name": "Primary Breed",
+									"name": "CRASH TIME",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Primary_Breed",
+									"name": "CRASH TIME",
+									"type": "String",
 									"physicalType": "UTF8"
 								}
 							},
 							{
 								"source": {
-									"name": "Secondary Breed",
+									"name": "BOROUGH",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Secondary_Breed",
+									"name": "BOROUGH",
+									"type": "String",
 									"physicalType": "UTF8"
 								}
 							},
 							{
 								"source": {
-									"name": "ZIP Code",
+									"name": "ZIP CODE",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "ZIP_Code",
+									"name": "ZIP CODE",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "LATITUDE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LATITUDE",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "LONGITUDE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LONGITUDE",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "LOCATION",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LOCATION",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "ON STREET NAME",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ON STREET NAME",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "CROSS STREET NAME",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CROSS STREET NAME",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "OFF STREET NAME",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "OFF STREET NAME",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "NUMBER OF PERSONS INJURED",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NUMBER OF PERSONS INJURED",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "NUMBER OF PERSONS KILLED",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NUMBER OF PERSONS KILLED",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "NUMBER OF PEDESTRIANS INJURED",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NUMBER OF PEDESTRIANS INJURED",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "NUMBER OF PEDESTRIANS KILLED",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NUMBER OF PEDESTRIANS KILLED",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "NUMBER OF CYCLIST INJURED",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NUMBER OF CYCLIST INJURED",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "NUMBER OF CYCLIST KILLED",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NUMBER OF CYCLIST KILLED",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "NUMBER OF MOTORIST INJURED",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NUMBER OF MOTORIST INJURED",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "NUMBER OF MOTORIST KILLED",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NUMBER OF MOTORIST KILLED",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRIBUTING FACTOR VEHICLE 1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CONTRIBUTING FACTOR VEHICLE 1",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRIBUTING FACTOR VEHICLE 2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CONTRIBUTING FACTOR VEHICLE 2",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRIBUTING FACTOR VEHICLE 3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CONTRIBUTING FACTOR VEHICLE 3",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRIBUTING FACTOR VEHICLE 4",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CONTRIBUTING FACTOR VEHICLE 4",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRIBUTING FACTOR VEHICLE 5",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CONTRIBUTING FACTOR VEHICLE 5",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "COLLISION_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "COLLISION_ID",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "VEHICLE TYPE CODE 1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "VEHICLE TYPE CODE 1",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "VEHICLE TYPE CODE 2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "VEHICLE TYPE CODE 2",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "VEHICLE TYPE CODE 3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "VEHICLE TYPE CODE 3",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "VEHICLE TYPE CODE 4",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "VEHICLE TYPE CODE 4",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "VEHICLE TYPE CODE 5",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "VEHICLE TYPE CODE 5",
+									"type": "String",
 									"physicalType": "UTF8"
 								}
 							}
@@ -312,6 +582,11 @@
 				]
 			}
 		],
+		"parameters": {
+			"JobID": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
