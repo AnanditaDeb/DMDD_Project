@@ -643,8 +643,6 @@
 			{
 				"name": "Parquet2StageTable",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Copy_2_Silver_As_Parquet_Chicago",
@@ -671,12 +669,6 @@
 						},
 						"formatSettings": {
 							"type": "ParquetReadSettings"
-						}
-					},
-					"sink": {
-						"type": "SnowflakeV2Sink",
-						"importSettings": {
-							"type": "SnowflakeImportCopyCommand"
 						}
 					},
 					"enableStaging": true,
@@ -1105,13 +1097,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Parquet_Austin",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "SnowflakeTable_Austin",
+						"referenceName": "Parquet_Chicago",
 						"type": "DatasetReference"
 					}
 				]
