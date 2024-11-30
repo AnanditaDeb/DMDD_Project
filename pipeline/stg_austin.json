@@ -482,28 +482,6 @@
 							},
 							{
 								"source": {
-									"name": "Crash timestamp (US/Central)",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Crash_timestamp_US_Central",
-									"physicalType": "UTF8"
-								}
-							},
-							{
-								"source": {
-									"name": "Crash timestamp",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Crash_timestamp",
-									"physicalType": "UTF8"
-								}
-							},
-							{
-								"source": {
 									"name": "Is deleted",
 									"type": "String",
 									"physicalType": "String"
@@ -987,26 +965,6 @@
 								"sink": {
 									"name": "MICROMOBILITY_DEATH_COUNT",
 									"type": "Int64"
-								}
-							},
-							{
-								"source": {
-									"name": "Crash_timestamp_US_Central",
-									"type": "String"
-								},
-								"sink": {
-									"name": "CRASH_TIMESTAMP_CT",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "Crash_timestamp",
-									"type": "String"
-								},
-								"sink": {
-									"name": "CRASH_TIMESTAMP",
-									"type": "DateTime"
 								}
 							},
 							{
