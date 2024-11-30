@@ -10,37 +10,11 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileSystem": "silver"
+				"fileName": "NYC_Dataset",
+				"fileSystem": "bronze"
 			},
 			"compressionCodec": "snappy"
 		},
-		"schema": [
-			{
-				"name": "Breed_sk",
-				"type": "DECIMAL",
-				"precision": 10,
-				"scale": 0
-			},
-			{
-				"name": "Primary_Breed_Name",
-				"type": "UTF8"
-			},
-			{
-				"name": "Secondary_Breed_Name",
-				"type": "UTF8"
-			},
-			{
-				"name": "Species_Name",
-				"type": "UTF8"
-			},
-			{
-				"name": "DI_Created_Dt",
-				"type": "DATE"
-			},
-			{
-				"name": "DI_Job_Id",
-				"type": "UTF8"
-			}
-		]
+		"schema": []
 	}
 }
