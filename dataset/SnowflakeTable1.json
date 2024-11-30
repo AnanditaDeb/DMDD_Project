@@ -18,7 +18,7 @@
 		"schema": [],
 		"typeProperties": {
 			"schema": {
-				"value": "DEV_EDW.dbo",
+				"value": "dbo",
 				"type": "Expression"
 			},
 			"table": {
