@@ -10,8 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "Austin_Dataset",
-				"fileSystem": "bronze"
+				"fileName": "AUSTIN_Dataset",
+				"fileSystem": "silver"
 			},
 			"compressionCodec": "snappy"
 		},
