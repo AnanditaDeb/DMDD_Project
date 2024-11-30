@@ -199,11 +199,11 @@
 									"referenceName": "SnowflakeTable1",
 									"type": "DatasetReference",
 									"parameters": {
-										"sname": {
-											"value": "@item().schema_name\n",
+										"schema_name": {
+											"value": "EDW.dbo\n",
 											"type": "Expression"
 										},
-										"tablename": {
+										"table_name": {
 											"value": "@item().table_name",
 											"type": "Expression"
 										}
