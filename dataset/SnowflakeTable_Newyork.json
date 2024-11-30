@@ -1,5 +1,5 @@
 {
-	"name": "SnowflakeTable2",
+	"name": "SnowflakeTable_Newyork",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_snowflake_adf_assign",
