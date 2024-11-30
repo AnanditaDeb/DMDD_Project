@@ -6,11 +6,11 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"sname": {
+			"schema_name": {
 				"type": "string",
 				"defaultValue": "dbo"
 			},
-			"tablename": {
+			"table_name": {
 				"type": "string"
 			}
 		},
