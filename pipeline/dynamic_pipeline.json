@@ -200,7 +200,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"schema_name": {
-											"value": "EDW.dbo\n",
+											"value": "EDW\n",
 											"type": "Expression"
 										},
 										"table_name": {
